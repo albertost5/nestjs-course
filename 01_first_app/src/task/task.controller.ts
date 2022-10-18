@@ -1,4 +1,5 @@
-import { Body, Controller, Delete, Get, HttpCode, Param, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, HttpCode, Param, Post, Put, UsePipes, ValidationPipe } from '@nestjs/common';
+import { resolveObjectURL } from 'buffer';
 import { TaskDTO } from './dto/task.dto';
 import { ITask } from './task.interface';
 import { TaskService } from './task.service';
@@ -10,8 +11,13 @@ export class TaskController {
 
     @Post()
     // @HttpCode(200)
-    create(@Body() taskDTO: TaskDTO ): ITask {
-        return this.taskService.createTask(taskDTO);
+    create(@Body() taskDTO: TaskDTO ) {
+        return new Promise( (resolve, reject) => {
+            setTimeout(() => {
+                reject('Error')
+            }, 3000);
+        })
+        // return this.taskService.createTask(taskDTO);
     }
 
     @Get()
@@ -25,6 +31,7 @@ export class TaskController {
     }
 
     @Put(':id')
+    // @UsePipes(new ValidationPipe())
     findByIdAndUpdate(@Param('id') id: string, @Body() taskDTO: TaskDTO): ITask {
         return this.taskService.findByIdAndUpdate(id, taskDTO);
     }
