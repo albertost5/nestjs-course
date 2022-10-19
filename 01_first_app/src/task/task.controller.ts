@@ -14,8 +14,8 @@ export class TaskController {
     create(@Body() taskDTO: TaskDTO ) {
         return new Promise( (resolve, reject) => {
             setTimeout(() => {
-                reject('Error')
-            }, 3000);
+                reject('Something went wrong!')
+            }, 15000);
         })
         // return this.taskService.createTask(taskDTO);
     }
