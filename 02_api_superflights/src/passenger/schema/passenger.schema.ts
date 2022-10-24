@@ -11,6 +11,6 @@ export const PassengerSchema = new Schema({
         required: true,
         index: true,
         unique: true
-    }
-});
+    } 
+}, { timestamps: true });
 
