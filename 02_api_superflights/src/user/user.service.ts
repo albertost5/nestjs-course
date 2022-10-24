@@ -13,6 +13,15 @@ export class UserService {
 
     private readonly users: IUser[] = [];
 
+    async checkPassword(password: string, passwordDb: string): Promise<boolean> {
+        return await bcrypt.compare(password, passwordDb);
+    }
+
+    async findByUsername(username: string) {
+        const user = await this.userModel.findOne({ username }).exec();
+        return user;
+    }
+
     async hashPassword(password: string): Promise<string> {
         const saltRounds: number = 10;
         return await bcrypt.hash(password, saltRounds);
