@@ -7,10 +7,15 @@ import { PassengerModule } from './passenger/passenger.module';
 import { FlightModule } from './flight/flight.module';
 
 @Module({
-  imports: [ConfigModule.forRoot({
-    envFilePath: ['.env.dev'],
-    isGlobal: true
-  }), UserModule, PassengerModule, FlightModule],
+  imports: [
+    ConfigModule.forRoot({
+      envFilePath: ['.env.dev'],
+      isGlobal: true
+    }), 
+    UserModule,
+    PassengerModule,
+    FlightModule
+  ],
   controllers: [AppController],
   providers: [AppService],
 })

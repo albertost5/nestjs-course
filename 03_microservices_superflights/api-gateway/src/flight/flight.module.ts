@@ -3,7 +3,7 @@ import { ProxyModule } from 'src/common/proxy/proxy.module';
 import { FlightController } from './flight.controller';
 
 @Module({
-  providers: [ProxyModule],
+  imports: [ProxyModule],
   controllers: [FlightController]
 })
 export class FlightModule {}
