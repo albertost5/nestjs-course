@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { Observable } from 'rxjs';
 import { UserMSG } from 'src/common/constants';
@@ -33,7 +33,7 @@ export class UserController {
         return this._clientProxyUser.send(UserMSG.UPDATE, { id, userDTO });
     }
 
-    @Put(':id')
+    @Delete(':id')
     delete(@Param('id') id: string): Observable<any> {
         return this._clientProxyUser.send(UserMSG.DELETE, id);
     }
