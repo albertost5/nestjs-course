@@ -26,17 +26,17 @@ export class FlightController {
     }
 
     @Get(':id')
-    findOne(@Param() id: string): Observable<IFlight> {
+    findOne(@Param('id') id: string): Observable<IFlight> {
         return this._clientProxyFlights.send(FlightMSG.FIND_ONE, id);
     }
 
     @Put(':id')
-    update(@Param() id: string, @Body() flightDTO: FlightDTO): Observable<IFlight> {
+    update(@Param('id') id: string, @Body() flightDTO: FlightDTO): Observable<IFlight> {
         return this._clientProxyFlights.send(FlightMSG.UPDATE, { id, flightDTO });
     }
 
     @Delete(':id')
-    delete(@Param() id: string): Observable<any> {
+    delete(@Param('id') id: string): Observable<any> {
         return this._clientProxyFlights.send(FlightMSG.DELETE, id);
     }
 
